@@ -94,6 +94,94 @@
   .nav .neu-pill{color:#ff8a3d}
   .nav .neu-pill::before{content:"🔥";margin-right:4px;filter:saturate(1.4)}
 
+  /* ---------------- hero banner ---------------- */
+  .hero-banner{
+    position:relative;width:100%;
+    aspect-ratio:21/7;min-height:340px;max-height:560px;
+    background:#eef6f7;overflow:hidden;
+  }
+  .hero-banner .bg{
+    position:absolute;inset:0;
+    background-image:url('hero-banner.png');
+    background-size:cover;
+    background-position:35% 50%;
+  }
+  .hero-banner::after{
+    content:"";position:absolute;inset:0;
+    background:linear-gradient(90deg,
+      rgba(255,255,255,0) 35%,
+      rgba(255,255,255,.4) 55%,
+      rgba(230,243,244,.95) 100%);
+  }
+  .hero-banner .copy{
+    position:absolute;inset:0;z-index:2;
+    max-width:1280px;margin:0 auto;padding:0 24px;
+    display:flex;align-items:center;justify-content:flex-end;
+  }
+  .hero-banner .card{
+    max-width:480px;text-align:left;
+  }
+  .hero-banner .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    background:#fff;color:var(--teal-dark);
+    font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+    padding:8px 14px;border-radius:999px;
+    box-shadow:0 4px 14px rgba(18,84,103,.18);
+  }
+  .hero-banner .eyebrow::before{
+    content:"";width:8px;height:8px;border-radius:50%;
+    background:var(--red-sale);
+    box-shadow:0 0 0 0 rgba(205,0,0,.6);
+    animation:pulseRed 1.8s infinite;
+  }
+  @keyframes pulseRed{
+    0%{box-shadow:0 0 0 0 rgba(205,0,0,.55)}
+    70%{box-shadow:0 0 0 10px rgba(205,0,0,0)}
+    100%{box-shadow:0 0 0 0 rgba(205,0,0,0)}
+  }
+  .hero-banner h1{
+    margin-top:16px;
+    font-size:clamp(32px,3.8vw,52px);font-weight:700;line-height:1.05;
+    color:var(--teal-dark);letter-spacing:-.015em;
+  }
+  .hero-banner h1 span{
+    color:var(--teal);
+    background:linear-gradient(90deg,var(--teal),#16a5ad);
+    -webkit-background-clip:text;background-clip:text;color:transparent;
+  }
+  .hero-banner p{
+    margin-top:14px;
+    font-size:16px;line-height:1.55;color:#2a3c40;font-weight:500;max-width:42ch;
+  }
+  .hero-banner .ctas{
+    margin-top:22px;display:flex;gap:12px;flex-wrap:wrap;align-items:center;
+  }
+  .hero-banner .btn-primary{
+    display:inline-flex;align-items:center;gap:10px;
+    background:var(--teal);color:#fff;
+    font-size:15px;font-weight:600;
+    padding:14px 24px;border-radius:6px;
+    transition:background .15s ease,transform .15s ease;
+  }
+  .hero-banner .btn-primary:hover{background:var(--teal-hover);transform:translateY(-1px)}
+  .hero-banner .btn-primary svg{width:18px;height:18px;stroke-width:2.4}
+  .hero-banner .code-inline{
+    display:inline-flex;align-items:center;gap:8px;
+    font-size:14px;font-weight:600;color:var(--teal-dark);
+  }
+  .hero-banner .code-inline b{
+    background:#fff;border:1.5px dashed var(--red-sale);color:var(--red-sale);
+    padding:5px 10px;border-radius:4px;letter-spacing:.06em;
+    font-weight:700;user-select:all;
+  }
+  @media (max-width:780px){
+    .hero-banner{aspect-ratio:auto;min-height:auto;display:flex;flex-direction:column}
+    .hero-banner .bg{position:relative;height:240px}
+    .hero-banner::after{display:none}
+    .hero-banner .copy{position:relative;padding:28px 24px 32px;background:#eef6f7}
+    .hero-banner .card{max-width:none}
+  }
+
   /* ---------------- breadcrumb ---------------- */
   .crumbs{
     max-width:1280px;margin:0 auto;padding:18px 24px 8px;
@@ -402,6 +490,28 @@
   </div>
 </nav>
 
+<!-- HERO BANNER -->
+<section class="hero-banner" aria-label="Sommer-Aktion: eSUN PLA-Basic Aqua">
+  <div class="bg" role="img" aria-label="Aqua-Filamentspule mit 3D-gedruckter Vase und Sommer-Accessoires"></div>
+  <div class="copy">
+    <div class="card">
+      <span class="eyebrow">Sommer Drop · Live</span>
+      <h1>Drucken in <span>Aqua-Kühle.</span></h1>
+      <p>
+        Das neue eSUN PLA-Basic Aqua — kühles, klares Blau, verbesserte Fließfähigkeit,
+        leicht zu drucken. Jetzt nur diesen Sommer mit <b style="color:var(--red-sale)">-10 %</b>.
+      </p>
+      <div class="ctas">
+        <a class="btn-primary" href="#kaufen">
+          Jetzt -10% sichern
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+        <span class="code-inline">mit Code <b>SUMMER10</b></span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- BREADCRUMB -->
 <div class="crumbs">
   <a href="https://www.3djake.at">Startseite</a><span>›</span>
@@ -421,7 +531,7 @@
 </div>
 
 <!-- PRODUCT DETAIL PAGE -->
-<section class="pdp">
+<section class="pdp" id="kaufen">
   <!-- LEFT: gallery -->
   <div>
     <div class="gallery-main">
