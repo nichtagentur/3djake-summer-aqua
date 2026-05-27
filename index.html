@@ -3,483 +3,601 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>eSUN PLA-Basic Aqua — Sommer Drop · 3DJake</title>
-<meta name="description" content="eSUN PLA-Basic Aqua: 1,75 mm / 1 kg PLA-Filament in kuehler Aqua-Farbe. Aktion: -10% mit Code SUMMER10." />
+<title>eSUN PLA-Basic Aqua — Sommer-Aktion · 3DJake</title>
+<meta name="description" content="eSUN PLA-Basic Aqua: 1,75 mm / 1 kg PLA-Filament. Aktion: -10% mit Code SUMMER10." />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=DM+Sans:opsz,wght@9..40,300..700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
 <style>
   :root{
-    --orange:#ff8800;
-    --orange-hot:#ff5a00;
-    --aqua:#5fd1d6;
-    --aqua-deep:#1a8a90;
-    --ink:#0a0a0d;
-    --ink-2:#16161b;
-    --ink-3:#222229;
-    --paper:#f6f1e8;
-    --paper-dim:#d8d2c4;
-    --line:rgba(255,255,255,.08);
+    --teal:#00838a;
+    --teal-dark:#125467;
+    --teal-hover:#006d73;
+    --orange:#ff6600;
+    --red-sale:#cd0000;
+    --ink:#1a1a1a;
+    --ink-2:#444;
+    --muted:#6b6b6b;
+    --line:#e5e7eb;
+    --line-soft:#f1f3f5;
+    --bg:#ffffff;
+    --bg-soft:#f7f9fa;
+    --bg-teal-light:#e6f3f4;
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html,body{background:var(--ink);color:var(--paper)}
+  html,body{background:var(--bg);color:var(--ink)}
   body{
-    font-family:'DM Sans',sans-serif;
-    font-feature-settings:"ss01","cv11";
+    font-family:'Poppins','Helvetica Neue',Helvetica,Arial,sans-serif;
+    font-weight:400;
     -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
-    background:
-      radial-gradient(800px 600px at 90% -10%, rgba(255,136,0,.18), transparent 60%),
-      radial-gradient(700px 700px at -10% 110%, rgba(95,209,214,.18), transparent 60%),
-      var(--ink);
-  }
-  /* fine print-bed grid */
-  body::before{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
-    background-image:
-      linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-      linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
-    background-size:48px 48px;
-    mask-image:radial-gradient(circle at 50% 40%, #000 60%, transparent 100%);
-  }
-  /* grain */
-  body::after{
-    content:"";position:fixed;inset:0;pointer-events:none;z-index:2;opacity:.06;mix-blend-mode:overlay;
-    background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence baseFrequency='.9' numOctaves='2' seed='3'/><feColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .6 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
   }
   a{color:inherit;text-decoration:none}
   img{display:block;max-width:100%}
 
-  /* ---------------- header ---------------- */
-  header{
-    position:relative;z-index:5;
-    display:flex;align-items:center;justify-content:space-between;
-    padding:22px clamp(20px,4vw,56px);
+  /* ---------------- top info bar (dark teal, like real 3DJake) ---------------- */
+  .topbar{
+    background:var(--teal-dark);color:#fff;
+    font-size:13px;font-weight:500;
+    padding:10px 0;text-align:center;
+  }
+  .topbar b{font-weight:700}
+  .topbar .bolt{color:#ffd84d;font-weight:700;margin:0 6px}
+
+  .subbar{
     border-bottom:1px solid var(--line);
-    background:rgba(10,10,13,.55);backdrop-filter:blur(10px);
+    background:#fff;
+    font-size:13px;color:var(--muted);
   }
-  header .logo{height:34px;filter:brightness(0) invert(1)}
-  header nav{display:flex;gap:28px;font:500 13px/1 'DM Sans';letter-spacing:.08em;text-transform:uppercase;color:#bbb}
-  header nav a:hover{color:var(--orange)}
-  header .pill{
-    display:inline-flex;align-items:center;gap:8px;
-    padding:8px 14px;border:1px solid var(--orange);color:var(--orange);
-    font:600 11px/1 'JetBrains Mono';letter-spacing:.12em;text-transform:uppercase;
-    border-radius:999px;
+  .subbar .wrap{
+    max-width:1280px;margin:0 auto;padding:10px 24px;
+    display:flex;align-items:center;gap:32px;flex-wrap:wrap;
   }
-  header .pill::before{
-    content:"";width:6px;height:6px;background:var(--orange);border-radius:50%;
-    box-shadow:0 0 0 0 var(--orange);animation:pulse 1.6s infinite;
-  }
-  @keyframes pulse{
-    0%{box-shadow:0 0 0 0 rgba(255,136,0,.6)}
-    70%{box-shadow:0 0 0 10px rgba(255,136,0,0)}
-    100%{box-shadow:0 0 0 0 rgba(255,136,0,0)}
-  }
+  .subbar b{color:var(--ink);font-weight:600}
+  .subbar .dot{width:4px;height:4px;background:#bbb;border-radius:50%}
 
-  /* ---------------- marquee promo ---------------- */
-  .ticker{
-    background:var(--orange);color:var(--ink);
-    border-block:1px solid #000;
-    overflow:hidden;position:relative;z-index:5;
+  /* ---------------- header (logo + nav) ---------------- */
+  header{
+    background:#fff;border-bottom:1px solid var(--line);
   }
-  .ticker-track{
-    display:flex;gap:48px;white-space:nowrap;
-    padding:10px 0;
-    font:700 13px/1 'JetBrains Mono';letter-spacing:.18em;text-transform:uppercase;
-    animation:scroll 28s linear infinite;
+  header .wrap{
+    max-width:1280px;margin:0 auto;padding:20px 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:32px;
   }
-  .ticker-track span{display:inline-flex;align-items:center;gap:14px}
-  .ticker-track i{display:inline-block;width:6px;height:6px;background:var(--ink);border-radius:50%;font-style:normal}
-  @keyframes scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  header .logo{height:38px}
+  .search{
+    flex:1;max-width:560px;
+    display:flex;align-items:center;gap:10px;
+    border:1px solid var(--line);border-radius:999px;
+    padding:11px 20px;color:var(--muted);font-size:14px;
+  }
+  .search svg{width:18px;height:18px;flex-shrink:0}
+  .header-actions{display:flex;align-items:center;gap:24px;font-size:14px;font-weight:500}
+  .header-actions a{display:inline-flex;align-items:center;gap:8px}
+  .header-actions svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.6}
 
-  /* ---------------- hero ---------------- */
-  .hero{
-    position:relative;z-index:3;
-    padding:64px clamp(20px,4vw,56px) 40px;
-    display:grid;grid-template-columns:1.05fr .95fr;gap:48px;
-    align-items:end;
+  /* nav strip (teal) */
+  .nav{
+    background:var(--teal-dark);
   }
-  @media (max-width:920px){.hero{grid-template-columns:1fr;align-items:start}}
+  .nav .wrap{
+    max-width:1280px;margin:0 auto;padding:0 24px;
+    display:flex;align-items:stretch;gap:0;
+  }
+  .nav a{
+    color:#fff;font-weight:600;font-size:15px;
+    padding:16px 22px;display:inline-flex;align-items:center;gap:8px;
+    transition:background .15s ease;
+  }
+  .nav a:hover{background:rgba(255,255,255,.1)}
+  .nav .sale-pill{color:#ffd84d}
+  .nav .neu-pill{color:#ff8a3d}
+  .nav .neu-pill::before{content:"🔥";margin-right:4px;filter:saturate(1.4)}
 
-  .eyebrow{
-    display:flex;align-items:center;gap:14px;
-    font:600 11px/1 'JetBrains Mono';letter-spacing:.24em;text-transform:uppercase;
-    color:var(--orange);margin-bottom:24px;
+  /* ---------------- breadcrumb ---------------- */
+  .crumbs{
+    max-width:1280px;margin:0 auto;padding:18px 24px 8px;
+    font-size:13px;color:var(--muted);
   }
-  .eyebrow::before{content:"";width:34px;height:1px;background:var(--orange)}
+  .crumbs a:hover{color:var(--teal)}
+  .crumbs span{margin:0 8px;color:#bbb}
 
-  h1.title{
-    font-family:'Fraunces',serif;
-    font-variation-settings:"opsz" 144,"wght" 480,"SOFT" 30,"WONK" 1;
-    font-size:clamp(54px,8.4vw,148px);
-    line-height:.88;letter-spacing:-.025em;
-    color:var(--paper);
+  /* ---------------- promo strip (red sale chip style) ---------------- */
+  .promo-strip{
+    max-width:1280px;margin:8px auto 0;padding:0 24px;
   }
-  h1.title em{
-    font-style:italic;font-variation-settings:"opsz" 144,"wght" 380,"SOFT" 100,"WONK" 1;
-    color:var(--aqua);display:block;
+  .promo-strip .inner{
+    background:linear-gradient(90deg,#fff5f0 0%,#ffe9d9 100%);
+    border:1px solid #ffd0b3;
+    border-left:6px solid var(--red-sale);
+    padding:18px 24px;border-radius:6px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
   }
-  h1.title b{
-    font-weight:900;font-variation-settings:"opsz" 144,"wght" 900,"WONK" 1;
-    color:var(--orange);font-style:normal;
+  .promo-strip .chip{
+    background:var(--red-sale);color:#fff;
+    font-weight:700;font-size:15px;padding:6px 14px;border-radius:4px;
+    letter-spacing:.02em;
   }
-
-  .lede{
-    margin-top:28px;max-width:46ch;
-    font:400 17px/1.55 'DM Sans';color:#c9c5bd;
-  }
-
-  .meta-row{
-    margin-top:36px;display:flex;flex-wrap:wrap;gap:8px 28px;
-    font:500 12px/1 'JetBrains Mono';letter-spacing:.14em;text-transform:uppercase;color:#9a958b;
-  }
-  .meta-row b{color:var(--paper);font-weight:600}
-
-  /* product visual */
-  .product-frame{
-    position:relative;aspect-ratio:1/1.05;
-    border:1px solid var(--line);
-    background:
-      radial-gradient(circle at 60% 30%, rgba(95,209,214,.35), transparent 55%),
-      linear-gradient(180deg,#0e1115,#161a1f);
-    overflow:hidden;
-  }
-  .product-frame::before{
-    content:"PRINT BED · 220 × 220 mm";
-    position:absolute;top:14px;left:16px;z-index:3;
-    font:600 10px/1 'JetBrains Mono';letter-spacing:.2em;color:#7a8087;
-  }
-  .product-frame::after{
-    content:"";position:absolute;inset:14px;border:1px dashed rgba(95,209,214,.35);pointer-events:none;
-  }
-  .product-img{
-    position:absolute;inset:0;display:grid;place-items:center;
-  }
-  .product-img img{
-    width:78%;height:78%;object-fit:contain;
-    filter:drop-shadow(0 30px 60px rgba(95,209,214,.35)) drop-shadow(0 0 80px rgba(95,209,214,.25));
-    animation:float 6s ease-in-out infinite;
-  }
-  @keyframes float{50%{transform:translateY(-12px)}}
-
-  .thermo{
-    position:absolute;right:18px;top:18px;bottom:18px;width:34px;z-index:4;
-    display:flex;flex-direction:column;align-items:center;gap:6px;
-    font:500 9px/1 'JetBrains Mono';color:#9a958b;letter-spacing:.1em;
-  }
-  .thermo-bar{
-    flex:1;width:6px;border-radius:6px;
-    background:linear-gradient(180deg,var(--orange-hot) 0%, var(--orange) 25%, #444 50%, var(--aqua) 100%);
-    position:relative;overflow:hidden;
-  }
-  .thermo-bar::after{
-    content:"";position:absolute;left:-4px;width:14px;height:14px;border-radius:50%;
-    background:var(--orange);box-shadow:0 0 18px var(--orange);
-    top:18%;animation:therm 4s ease-in-out infinite alternate;
-  }
-  @keyframes therm{from{top:18%}to{top:34%}}
-
-  .badge-corner{
-    position:absolute;right:-18px;top:-18px;width:148px;height:148px;z-index:6;
-    background:var(--orange);color:var(--ink);
-    border-radius:50%;display:grid;place-items:center;
-    transform:rotate(-8deg);
-    box-shadow:0 24px 50px rgba(255,136,0,.45);
-    font-family:'Fraunces',serif;
-  }
-  .badge-corner .a{font:900 36px/1 'Fraunces';letter-spacing:-.04em}
-  .badge-corner small{display:block;font:600 9px/1 'JetBrains Mono';letter-spacing:.2em;margin-top:6px;text-transform:uppercase}
-  .badge-corner div{text-align:center;display:flex;flex-direction:column;align-items:center;gap:4px}
-
-  /* ---------------- specs grid ---------------- */
-  .specs{
-    margin:80px clamp(20px,4vw,56px) 0;
-    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
-    display:grid;grid-template-columns:repeat(4,1fr);
-    position:relative;z-index:3;
-  }
-  .specs > div{
-    padding:32px 28px;
-    border-right:1px solid var(--line);
-  }
-  .specs > div:last-child{border-right:none}
-  @media (max-width:780px){
-    .specs{grid-template-columns:repeat(2,1fr)}
-    .specs > div:nth-child(2){border-right:none}
-    .specs > div:nth-child(-n+2){border-bottom:1px solid var(--line)}
-  }
-  .spec-k{font:500 10px/1 'JetBrains Mono';letter-spacing:.22em;text-transform:uppercase;color:var(--orange);margin-bottom:14px}
-  .spec-v{font-family:'Fraunces',serif;font-variation-settings:"opsz" 144,"wght" 400;font-size:clamp(28px,3vw,40px);line-height:1;color:var(--paper);letter-spacing:-.02em}
-  .spec-sub{font:400 13px/1.4 'DM Sans';color:#9a958b;margin-top:8px}
-
-  /* ---------------- promo / sale band ---------------- */
-  .sale{
-    margin:96px clamp(20px,4vw,56px) 0;
-    position:relative;z-index:3;
-    background:linear-gradient(140deg,#1a1208 0%,#2a1c08 100%);
-    border:1px solid rgba(255,136,0,.4);
-    border-radius:4px;
-    padding:clamp(40px,6vw,80px);
-    display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center;
-    overflow:hidden;
-  }
-  @media (max-width:820px){.sale{grid-template-columns:1fr}}
-  .sale::before{
-    content:"SUMMER";position:absolute;right:-40px;bottom:-80px;
-    font:900 380px/1 'Fraunces';font-variation-settings:"opsz" 144,"wght" 900,"WONK" 1;
-    color:rgba(255,136,0,.05);letter-spacing:-.05em;pointer-events:none;
-  }
-  .sale h2{
-    font-family:'Fraunces',serif;font-variation-settings:"opsz" 144,"wght" 500,"WONK" 1;
-    font-size:clamp(36px,5vw,72px);line-height:.95;color:var(--paper);
-    letter-spacing:-.02em;
-  }
-  .sale h2 span{color:var(--orange);font-style:italic;font-variation-settings:"opsz" 144,"wght" 380,"SOFT" 100,"WONK" 1}
-  .sale p{margin-top:18px;font:400 16px/1.55 'DM Sans';color:#bcb6a8;max-width:48ch}
-
-  .code-box{
-    border:1.5px dashed var(--orange);padding:24px 28px;background:rgba(255,136,0,.06);
-    display:flex;flex-direction:column;gap:14px;align-items:flex-start;
-    position:relative;
-  }
-  .code-box .label{font:600 10px/1 'JetBrains Mono';letter-spacing:.22em;text-transform:uppercase;color:var(--orange)}
-  .code-box code{
-    font:700 38px/1 'JetBrains Mono';letter-spacing:.04em;color:var(--paper);
+  .promo-strip strong{color:var(--ink);font-weight:600;font-size:15px}
+  .promo-strip code{
+    background:#fff;border:1.5px dashed var(--red-sale);
+    color:var(--red-sale);font-weight:700;font-size:15px;
+    padding:6px 12px;border-radius:4px;
+    font-family:'Poppins',sans-serif;letter-spacing:.06em;
     user-select:all;
   }
-  .code-box .save{font:500 13px/1 'DM Sans';color:#cbb88a}
-  .code-box button{
-    margin-top:6px;
-    background:var(--orange);color:var(--ink);border:none;
-    font:700 12px/1 'JetBrains Mono';letter-spacing:.18em;text-transform:uppercase;
-    padding:12px 18px;cursor:pointer;border-radius:2px;
-    transition:transform .15s ease, background .15s ease;
-  }
-  .code-box button:hover{background:#fff;transform:translateY(-1px)}
-  .code-box button.copied{background:var(--aqua);color:var(--ink)}
 
-  /* ---------------- price card / CTA ---------------- */
-  .buy{
-    margin:48px clamp(20px,4vw,56px) 96px;
-    position:relative;z-index:3;
-    display:grid;grid-template-columns:1fr 1fr;gap:0;
-    border:1px solid var(--line);
+  /* ---------------- product hero (white, like real PDP) ---------------- */
+  .pdp{
+    max-width:1280px;margin:32px auto 0;padding:0 24px;
+    display:grid;grid-template-columns:1.05fr 1fr;gap:48px;
   }
-  @media (max-width:820px){.buy{grid-template-columns:1fr}}
-  .buy .col{padding:36px 32px;border-right:1px solid var(--line)}
-  .buy .col:last-child{border-right:none}
-  @media (max-width:820px){.buy .col{border-right:none;border-bottom:1px solid var(--line)}}
+  @media (max-width:920px){.pdp{grid-template-columns:1fr}}
 
-  .price-old{font:500 14px/1 'JetBrains Mono';color:#7a7468;text-decoration:line-through;letter-spacing:.08em}
+  .gallery-main{
+    background:#fff;border:1px solid var(--line);border-radius:6px;
+    padding:32px;aspect-ratio:1/1;display:grid;place-items:center;
+    position:relative;
+  }
+  .gallery-main img{max-height:100%;max-width:100%;object-fit:contain}
+  .gallery-main .chip-corner{
+    position:absolute;top:18px;left:18px;
+    background:var(--red-sale);color:#fff;
+    font-weight:700;font-size:14px;padding:6px 12px;border-radius:4px;
+  }
+  .gallery-main .chip-new{
+    position:absolute;top:18px;right:18px;
+    background:var(--orange);color:#fff;
+    font-weight:700;font-size:13px;padding:6px 12px;border-radius:4px;
+    display:inline-flex;align-items:center;gap:6px;
+  }
+  .gallery-thumbs{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;
+  }
+  .gallery-thumbs button{
+    aspect-ratio:1/1;border:1px solid var(--line);background:#fff;
+    border-radius:6px;padding:8px;cursor:pointer;
+    transition:border-color .15s ease;
+  }
+  .gallery-thumbs button.active,.gallery-thumbs button:hover{border-color:var(--teal)}
+  .gallery-thumbs img{width:100%;height:100%;object-fit:contain}
+
+  /* product info */
+  .brand-line{
+    font-size:13px;color:var(--muted);font-weight:500;
+    text-transform:uppercase;letter-spacing:.08em;
+  }
+  .brand-line a{color:var(--teal);font-weight:600}
+
+  h1.title{
+    margin-top:8px;
+    font-size:clamp(28px,3.4vw,40px);font-weight:700;line-height:1.15;color:var(--ink);
+    letter-spacing:-.01em;
+  }
+
+  .stars{
+    display:flex;align-items:center;gap:10px;margin-top:14px;
+    font-size:13px;color:var(--muted);
+  }
+  .stars .s{color:var(--orange);letter-spacing:2px;font-size:16px}
+
+  .bullets{
+    margin-top:22px;padding:18px 22px;
+    background:var(--bg-teal-light);border-radius:6px;
+  }
+  .bullets li{
+    list-style:none;padding:6px 0 6px 28px;position:relative;
+    font-size:15px;color:var(--ink);font-weight:500;
+  }
+  .bullets li::before{
+    content:"";position:absolute;left:0;top:11px;width:16px;height:16px;
+    background:var(--teal);
+    -webkit-mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>") no-repeat center/contain;
+            mask:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path fill='black' d='M9 16.17 4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z'/></svg>") no-repeat center/contain;
+  }
+
+  /* price block */
+  .price-block{
+    margin-top:24px;padding:22px 24px;
+    border:1px solid var(--line);border-radius:6px;background:#fff;
+  }
+  .price-old{
+    font-size:14px;color:var(--muted);text-decoration:line-through;
+    font-weight:500;
+  }
+  .price-row{display:flex;align-items:baseline;gap:14px;margin-top:6px;flex-wrap:wrap}
   .price-new{
-    font-family:'Fraunces',serif;font-variation-settings:"opsz" 144,"wght" 600,"WONK" 1;
-    font-size:clamp(60px,8vw,120px);line-height:.9;color:var(--orange);letter-spacing:-.03em;
-    margin-top:6px;
+    font-size:42px;font-weight:700;color:var(--red-sale);line-height:1;
+    letter-spacing:-.01em;
   }
-  .price-new sub{font:600 18px/1 'JetBrains Mono';vertical-align:super;color:var(--orange);letter-spacing:.04em}
-  .price-meta{margin-top:18px;font:400 13px/1.5 'DM Sans';color:#9a958b}
-  .variant{
-    display:flex;justify-content:space-between;align-items:baseline;
-    padding:12px 0;border-bottom:1px solid var(--line);
-    font:500 14px/1 'DM Sans';color:#cdc7ba;
+  .price-save{
+    background:var(--red-sale);color:#fff;
+    font-size:13px;font-weight:700;padding:4px 10px;border-radius:4px;
   }
-  .variant:last-child{border-bottom:none}
-  .variant em{font:500 12px/1 'JetBrains Mono';color:#7a7468;font-style:normal;letter-spacing:.08em}
+  .price-meta{
+    font-size:12px;color:var(--muted);margin-top:8px;
+  }
+  .price-meta b{color:var(--ink);font-weight:600}
 
+  /* variants */
+  .variants{
+    margin-top:20px;display:grid;gap:10px;
+  }
+  .variants label{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding:14px 18px;border:1.5px solid var(--line);border-radius:6px;
+    cursor:pointer;font-size:14px;font-weight:500;
+    transition:border-color .15s ease, background .15s ease;
+  }
+  .variants label:hover{border-color:var(--teal)}
+  .variants input{accent-color:var(--teal);width:18px;height:18px}
+  .variants label.active{border-color:var(--teal);background:var(--bg-teal-light)}
+  .variants .vt-name{flex:1;display:flex;align-items:center;gap:12px}
+  .variants .vt-price{font-weight:700;color:var(--ink)}
+  .variants .vt-sale{font-weight:700;color:var(--red-sale);margin-left:8px}
+
+  /* CTA */
+  .qty-cta{margin-top:22px;display:flex;gap:12px;align-items:stretch}
+  .qty{
+    display:flex;align-items:center;border:1.5px solid var(--line);border-radius:6px;
+    background:#fff;
+  }
+  .qty button{
+    width:44px;height:52px;background:none;border:none;font-size:18px;font-weight:600;
+    cursor:pointer;color:var(--ink);
+  }
+  .qty button:hover{color:var(--teal)}
+  .qty input{
+    width:48px;height:52px;border:none;text-align:center;font:600 16px 'Poppins';
+    color:var(--ink);outline:none;
+  }
   .cta{
-    display:inline-flex;align-items:center;gap:14px;
-    padding:18px 26px;background:var(--orange);color:var(--ink);
-    font:700 13px/1 'JetBrains Mono';letter-spacing:.18em;text-transform:uppercase;
-    border-radius:2px;margin-top:24px;
-    transition:transform .15s ease, background .15s ease;
+    flex:1;display:inline-flex;align-items:center;justify-content:center;gap:10px;
+    background:var(--teal);color:#fff;
+    font-size:16px;font-weight:600;
+    border:none;border-radius:6px;
+    padding:0 28px;cursor:pointer;
+    transition:background .15s ease;
   }
-  .cta:hover{background:var(--paper);transform:translateX(4px)}
-  .cta svg{width:18px;height:18px}
+  .cta:hover{background:var(--teal-hover)}
+  .cta svg{width:20px;height:20px;stroke-width:2}
 
-  /* ---------------- gallery ---------------- */
-  .gallery{
-    margin:0 clamp(20px,4vw,56px) 96px;
-    display:grid;grid-template-columns:repeat(3,1fr);gap:14px;
-    position:relative;z-index:3;
+  .wishlist{
+    width:52px;border:1.5px solid var(--line);border-radius:6px;background:#fff;
+    display:grid;place-items:center;cursor:pointer;
   }
-  @media (max-width:780px){.gallery{grid-template-columns:1fr}}
-  .gallery div{
-    aspect-ratio:1/1;background:#0e1115;border:1px solid var(--line);
-    display:grid;place-items:center;position:relative;overflow:hidden;
+  .wishlist svg{width:22px;height:22px;stroke:var(--ink);fill:none;stroke-width:1.6}
+  .wishlist:hover{border-color:var(--teal)}
+  .wishlist:hover svg{stroke:var(--teal)}
+
+  /* trust strip */
+  .trust{
+    margin-top:22px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px;
+    font-size:12px;color:var(--ink);
   }
-  .gallery div::before{
-    content:attr(data-tag);position:absolute;top:12px;left:14px;
-    font:600 9px/1 'JetBrains Mono';letter-spacing:.2em;color:#7a8087;text-transform:uppercase;
+  .trust div{display:flex;align-items:flex-start;gap:10px}
+  .trust svg{width:22px;height:22px;stroke:var(--teal);stroke-width:1.8;fill:none;flex-shrink:0}
+  .trust b{display:block;font-weight:600;margin-bottom:2px}
+  .trust span{color:var(--muted);font-size:11px;line-height:1.4}
+
+  /* ---------------- spec sheet ---------------- */
+  .section{
+    max-width:1280px;margin:64px auto 0;padding:0 24px;
   }
-  .gallery img{width:70%;height:70%;object-fit:contain;filter:drop-shadow(0 10px 30px rgba(95,209,214,.25))}
+  .section-head{
+    font-size:22px;font-weight:700;color:var(--ink);margin-bottom:20px;
+    border-bottom:2px solid var(--teal);padding-bottom:10px;display:inline-block;
+  }
+  .spec-grid{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:16px;
+  }
+  @media (max-width:780px){.spec-grid{grid-template-columns:repeat(2,1fr)}}
+  .spec-card{
+    background:#fff;border:1px solid var(--line);border-radius:6px;padding:22px;
+  }
+  .spec-card .ic{
+    width:38px;height:38px;border-radius:8px;background:var(--bg-teal-light);
+    display:grid;place-items:center;margin-bottom:14px;
+  }
+  .spec-card .ic svg{width:22px;height:22px;stroke:var(--teal);fill:none;stroke-width:1.8}
+  .spec-k{font-size:12px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:.06em}
+  .spec-v{font-size:22px;font-weight:700;color:var(--ink);margin-top:4px;line-height:1.2}
+  .spec-sub{font-size:13px;color:var(--muted);margin-top:8px;line-height:1.5}
+
+  /* ---------------- summer band ---------------- */
+  .summer-band{
+    background:linear-gradient(135deg,var(--teal) 0%,var(--teal-dark) 100%);
+    color:#fff;padding:48px 0;margin-top:80px;
+  }
+  .summer-band .wrap{
+    max-width:1280px;margin:0 auto;padding:0 24px;
+    display:grid;grid-template-columns:1.4fr 1fr;gap:48px;align-items:center;
+  }
+  @media (max-width:780px){.summer-band .wrap{grid-template-columns:1fr}}
+  .summer-band h2{font-size:clamp(28px,3.2vw,40px);font-weight:700;line-height:1.15;letter-spacing:-.01em}
+  .summer-band h2 span{color:#ffd84d}
+  .summer-band p{margin-top:14px;font-size:15px;line-height:1.55;opacity:.9;max-width:50ch}
+  .summer-band .code-box{
+    background:#fff;color:var(--ink);
+    border-radius:8px;padding:24px;
+    text-align:center;
+  }
+  .summer-band .code-box .lbl{
+    font-size:12px;font-weight:600;color:var(--muted);
+    text-transform:uppercase;letter-spacing:.1em;
+  }
+  .summer-band .code-box code{
+    display:block;margin:10px 0 14px;
+    font:800 38px/1 'Poppins',sans-serif;color:var(--teal-dark);letter-spacing:.04em;
+    user-select:all;
+  }
+  .summer-band .code-box .save{font-size:14px;color:var(--ink);margin-bottom:14px}
+  .summer-band .code-box .save b{color:var(--red-sale);font-weight:700}
+  .summer-band .code-box button{
+    width:100%;background:var(--teal);color:#fff;border:none;
+    padding:12px;font-size:14px;font-weight:600;border-radius:6px;cursor:pointer;
+  }
+  .summer-band .code-box button:hover{background:var(--teal-hover)}
+  .summer-band .code-box button.copied{background:#16a085}
 
   /* ---------------- footer ---------------- */
   footer{
-    border-top:1px solid var(--line);padding:36px clamp(20px,4vw,56px);
-    display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap;
-    font:400 12px/1.5 'JetBrains Mono';color:#7a7468;letter-spacing:.1em;
-    position:relative;z-index:3;
+    background:#f7f9fa;border-top:1px solid var(--line);
+    margin-top:64px;padding:36px 0 24px;
   }
-  footer .lg{height:22px;filter:brightness(0) invert(1);opacity:.7}
-  footer a:hover{color:var(--orange)}
-
-  /* entrance */
-  .reveal{opacity:0;transform:translateY(20px);animation:reveal .9s cubic-bezier(.2,.7,.2,1) forwards}
-  .reveal.d1{animation-delay:.05s}.reveal.d2{animation-delay:.18s}.reveal.d3{animation-delay:.32s}.reveal.d4{animation-delay:.5s}
-  @keyframes reveal{to{opacity:1;transform:none}}
+  footer .wrap{
+    max-width:1280px;margin:0 auto;padding:0 24px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+    font-size:13px;color:var(--muted);
+  }
+  footer img{height:30px}
+  footer a:hover{color:var(--teal)}
 </style>
 </head>
 <body>
 
-<header class="reveal">
-  <a href="https://www.3djake.at" aria-label="3DJake"><img src="threedjake-logo.svg" class="logo" alt="3DJake"></a>
-  <nav>
-    <a href="https://www.3djake.at/neuheiten">Neuheiten</a>
-    <a href="https://www.3djake.at/3d-druck-filament">Filament</a>
-    <a href="https://www.3djake.at/3d-drucker">Drucker</a>
-    <a href="https://www.3djake.at/zubehoer">Zubehör</a>
-  </nav>
-  <span class="pill">Sommer Drop · Live</span>
-</header>
+<!-- TOP INFO BAR (dark teal, like real 3DJake) -->
+<div class="topbar">
+  <span class="bolt">⚡</span> <b>Sommer-Aktion:</b> 10% Rabatt auf eSUN PLA-Basic Aqua mit Code <b>SUMMER10</b> <span class="bolt">⚡</span>
+</div>
 
-<div class="ticker">
-  <div class="ticker-track" aria-hidden="true">
-    <span>Sommer-Aktion <i></i> -10 % mit Code <b>SUMMER10</b></span>
-    <span>Versandkostenfrei AT ab 49,90 € <i></i></span>
-    <span>eSUN PLA-Basic Aqua · 1,75 mm / 1 kg <i></i></span>
-    <span>Verfügbar ab 22. September <i></i></span>
-    <span>Sommer-Aktion <i></i> -10 % mit Code <b>SUMMER10</b></span>
-    <span>Versandkostenfrei AT ab 49,90 € <i></i></span>
-    <span>eSUN PLA-Basic Aqua · 1,75 mm / 1 kg <i></i></span>
-    <span>Verfügbar ab 22. September <i></i></span>
+<!-- SUB BAR -->
+<div class="subbar">
+  <div class="wrap">
+    <span><b>Österreich:</b> Kostenloser Standardversand ab € 49,90</span>
+    <span class="dot"></span>
+    <span>Mehr als 10.600 Artikel</span>
+    <span class="dot"></span>
+    <span>Zum Ersatzteil-Finder</span>
   </div>
 </div>
 
-<section class="hero">
+<!-- HEADER -->
+<header>
+  <div class="wrap">
+    <a href="https://www.3djake.at" aria-label="3DJake Startseite"><img class="logo" src="threedjake-logo.svg" alt="3DJake"></a>
+    <div class="search">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      <span>Produkte suchen</span>
+    </div>
+    <div class="header-actions">
+      <a href="#"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>Anmelden</a>
+      <a href="#"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z"/></svg></a>
+      <a href="#"><svg viewBox="0 0 24 24"><path d="M6 6h15l-2 9H8L6 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>Warenkorb<br/><b>€ 0,00</b></a>
+    </div>
+  </div>
+</header>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="wrap">
+    <a href="https://www.3djake.at/marken">Marken</a>
+    <a href="https://www.3djake.at/3d-drucker">3D Drucker &amp; mehr</a>
+    <a href="https://www.3djake.at/ersatzteile">Ersatzteile &amp; Upgrades</a>
+    <a href="https://www.3djake.at/3d-druck-filament">Filament</a>
+    <a href="https://www.3djake.at/3d-resin">Resin</a>
+    <a href="https://www.3djake.at/zubehoer">Zubehör</a>
+    <a href="https://www.3djake.at/sale" class="sale-pill">⚡ Sale</a>
+    <a href="https://www.3djake.at/neuheiten" class="neu-pill">Neu</a>
+  </div>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="crumbs">
+  <a href="https://www.3djake.at">Startseite</a><span>›</span>
+  <a href="https://www.3djake.at/3d-druck-filament">Filament</a><span>›</span>
+  <a href="https://www.3djake.at/esun">eSUN</a><span>›</span>
+  <span style="color:var(--ink)">PLA-Basic Aqua</span>
+</div>
+
+<!-- PROMO STRIP -->
+<div class="promo-strip">
+  <div class="inner">
+    <span class="chip">-10%</span>
+    <strong>Sommer-Aktion: spar 10% auf das neue eSUN PLA-Basic Aqua.</strong>
+    <span>Code im Warenkorb eingeben:</span>
+    <code id="codetop">SUMMER10</code>
+  </div>
+</div>
+
+<!-- PRODUCT DETAIL PAGE -->
+<section class="pdp">
+  <!-- LEFT: gallery -->
   <div>
-    <div class="eyebrow reveal d1">Neuheit · eSUN · PLA-Filament</div>
-    <h1 class="title reveal d2">
-      Drucken in <em>Aqua-</em>
-      <b>Kühle.</b>
-    </h1>
-    <p class="lede reveal d3">
-      Das neue <b>eSUN PLA-Basic</b> in der Sommerfarbe Aqua: verbesserte Fließfähigkeit,
-      ruhigere Extrusion und ein klares, kühles Blau. Gemacht für Dekorationen,
-      Konzeptmodelle und schnelles Prototyping.
-    </p>
-    <div class="meta-row reveal d4">
-      <span><b>1,75 mm</b> Durchmesser</span>
-      <span><b>1 000 g</b> Spule</span>
-      <span><b>210–230 °C</b> Düse</span>
-      <span><b>45–60 °C</b> Bett</span>
+    <div class="gallery-main">
+      <span class="chip-corner">-10%</span>
+      <span class="chip-new">🔥 Neu</span>
+      <img id="mainimg" src="product-aqua.jpg" alt="eSUN PLA-Basic Aqua 1,75 mm 1 kg Spule">
+    </div>
+    <div class="gallery-thumbs">
+      <button class="active" onclick="setImg(this,'product-aqua.jpg')"><img src="product-aqua.jpg" alt=""></button>
+      <button onclick="setImg(this,'product-aqua-2.jpg')"><img src="product-aqua-2.jpg" alt=""></button>
+      <button onclick="setImg(this,'product-aqua-3.jpg')"><img src="product-aqua-3.jpg" alt=""></button>
+      <button onclick="setImg(this,'product-aqua.jpg')"><img src="product-aqua.jpg" alt=""></button>
     </div>
   </div>
 
-  <div class="product-frame reveal d2">
-    <div class="badge-corner" aria-hidden="true">
-      <div>
-        <span class="a">-10%</span>
-        <small>Sommer · SUMMER10</small>
+  <!-- RIGHT: product info -->
+  <div>
+    <div class="brand-line"><a href="https://www.3djake.at/esun">eSUN</a> · PLA-Filament</div>
+    <h1 class="title">eSUN PLA-Basic Aqua, 1,75 mm / 1000 g</h1>
+
+    <div class="stars">
+      <span class="s">★★★★★</span>
+      <span>Verbesserte Fließfähigkeit · bessere Druckleistung · leicht zu drucken</span>
+    </div>
+
+    <ul class="bullets">
+      <li>1,75 mm Durchmesser, 1.000 g Nettogewicht pro Spule</li>
+      <li>Empfohlene Düsentemperatur 210–230 °C</li>
+      <li>Empfohlene Druckbett-Temperatur 45–60 °C</li>
+      <li>Ideal für Dekorationen, Konzeptmodelle und Rapid Prototyping</li>
+    </ul>
+
+    <div class="price-block">
+      <div class="price-old">€ 12,49</div>
+      <div class="price-row">
+        <span class="price-new">€ 11,24</span>
+        <span class="price-save">Du sparst € 1,25 (-10%)</span>
+      </div>
+      <div class="price-meta">
+        inkl. <b>20% MwSt.</b> · zzgl. Versandkosten · <b>kostenloser Versand</b> in Österreich ab € 49,90
+        <br>Aktion gültig mit Code <b>SUMMER10</b> im Warenkorb.
+      </div>
+
+      <div class="variants">
+        <label class="active">
+          <span class="vt-name">
+            <input type="radio" name="variant" checked>
+            1,75 mm · 1 kg · Standardspule
+          </span>
+          <span><span class="vt-price" style="text-decoration:line-through;color:var(--muted);font-weight:500">€ 12,49</span><span class="vt-sale">€ 11,24</span></span>
+        </label>
+        <label>
+          <span class="vt-name">
+            <input type="radio" name="variant">
+            1,75 mm · 1 kg · Refill (ohne Kern)
+          </span>
+          <span><span class="vt-price" style="text-decoration:line-through;color:var(--muted);font-weight:500">€ 11,99</span><span class="vt-sale">€ 10,79</span></span>
+        </label>
+      </div>
+
+      <div class="qty-cta">
+        <div class="qty">
+          <button type="button" onclick="qty(-1)">−</button>
+          <input id="q" value="1" readonly>
+          <button type="button" onclick="qty(1)">+</button>
+        </div>
+        <a class="cta" href="https://www.3djake.at/esun/pla-basic-aqua?sai=38179" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 6h15l-2 9H8L6 3H2"/><circle cx="9" cy="20" r="1.5"/><circle cx="18" cy="20" r="1.5"/></svg>
+          In den Warenkorb
+        </a>
+        <button class="wishlist" aria-label="Auf Wunschliste">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78L12 21l8.84-8.61a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </button>
+      </div>
+
+      <div class="trust">
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M3 7h13l5 5v5h-3"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/><path d="M9 17h6"/></svg>
+          <div><b>Versandkostenfrei</b><span>in Österreich ab € 49,90</span></div>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24"><path d="M12 22s8-5 8-12V5l-8-3-8 3v5c0 7 8 12 8 12z"/></svg>
+          <div><b>14 Tage Rückgabe</b><span>einfach &amp; kostenfrei</span></div>
+        </div>
+        <div>
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><b>Verfügbar ab 22.09.</b><span>Vorbestellung möglich</span></div>
+        </div>
       </div>
     </div>
-    <div class="thermo" aria-hidden="true">
-      <span>230°</span>
-      <div class="thermo-bar"></div>
-      <span>45°</span>
+  </div>
+</section>
+
+<!-- SPEC SHEET -->
+<section class="section">
+  <h2 class="section-head">Technische Daten</h2>
+  <div class="spec-grid">
+    <div class="spec-card">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/></svg></div>
+      <div class="spec-k">Material</div>
+      <div class="spec-v">PLA</div>
+      <div class="spec-sub">eSUN PLA-Basic — modifiziertes PLA mit verbesserter Druckleistung.</div>
     </div>
-    <div class="product-img">
-      <img src="product-aqua.jpg" alt="eSUN PLA-Basic Aqua Spule">
+    <div class="spec-card">
+      <div class="ic"><svg viewBox="0 0 24 24"><path d="M12 2v8M9 5l3-3 3 3"/><path d="M5 14a7 7 0 1 0 14 0v-2H5z"/></svg></div>
+      <div class="spec-k">Düsentemperatur</div>
+      <div class="spec-v">210–230 °C</div>
+      <div class="spec-sub">Empfohlener Druckbereich laut Hersteller.</div>
+    </div>
+    <div class="spec-card">
+      <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="9" width="18" height="10" rx="1"/><path d="M7 9V6a5 5 0 0 1 10 0v3"/></svg></div>
+      <div class="spec-k">Druckbett</div>
+      <div class="spec-v">45–60 °C</div>
+      <div class="spec-sub">Beheiztes Druckbett empfohlen, aber kein Muss.</div>
+    </div>
+    <div class="spec-card">
+      <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="2"/></svg></div>
+      <div class="spec-k">Spule</div>
+      <div class="spec-v">1,75 mm / 1 kg</div>
+      <div class="spec-sub">Standardspule oder Refill (ohne Kern).</div>
     </div>
   </div>
 </section>
 
-<section class="specs">
-  <div>
-    <div class="spec-k">Material</div>
-    <div class="spec-v">PLA</div>
-    <div class="spec-sub">eSUN PLA-Basic, modifiziertes PLA mit verbesserter Druckleistung.</div>
-  </div>
-  <div>
-    <div class="spec-k">Düsentemperatur</div>
-    <div class="spec-v">210 – 230 °C</div>
-    <div class="spec-sub">Empfohlener Bereich laut Hersteller.</div>
-  </div>
-  <div>
-    <div class="spec-k">Druckbett</div>
-    <div class="spec-v">45 – 60 °C</div>
-    <div class="spec-sub">Beheiztes Bett empfohlen, aber kein Muss.</div>
-  </div>
-  <div>
-    <div class="spec-k">Spule</div>
-    <div class="spec-v">1 kg</div>
-    <div class="spec-sub">Auch als Refill (ohne Kern) erhältlich.</div>
-  </div>
-</section>
-
-<section class="sale">
-  <div>
-    <h2>Sommer<span>-Aktion.</span><br/>Zehn Prozent kühler.</h2>
-    <p>
-      Solange der Sommer dauert: Spar dir 10 % auf die neue Aqua-Charge.
-      Code im Warenkorb eingeben, fertig. Gilt auf die 1-kg-Spule
-      und die 1-kg-Refill-Variante.
-    </p>
-  </div>
-  <div class="code-box">
-    <span class="label">Aktionscode</span>
-    <code id="code">SUMMER10</code>
-    <span class="save">Du sparst <b style="color:var(--orange)">1,25 €</b> auf das Aqua-Filament.</span>
-    <button onclick="copyCode(this)">Code kopieren</button>
-  </div>
-</section>
-
-<section class="buy">
-  <div class="col">
-    <div class="spec-k" style="color:#9a958b">Sommer-Preis · 1,75 mm / 1 kg</div>
-    <div class="price-old">12,49 €</div>
-    <div class="price-new">11,24<sub>€</sub></div>
-    <div class="price-meta">
-      inkl. 20 % MwSt. · Versand frei in Österreich ab 49,90 € · Aktion gültig mit Code SUMMER10
+<!-- SUMMER BAND -->
+<section class="summer-band">
+  <div class="wrap">
+    <div>
+      <h2>Sommer-Aktion: <span>-10 % auf Aqua.</span></h2>
+      <p>
+        Solange der Sommer dauert, sparst du 10 % auf das neue eSUN PLA-Basic Aqua —
+        Spule und Refill. Code im Warenkorb eingeben, fertig.
+      </p>
     </div>
-    <a class="cta" href="https://www.3djake.at/esun/pla-basic-aqua?sai=38179" target="_blank" rel="noopener">
-      Jetzt auf 3djake.at sichern
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-    </a>
+    <div class="code-box">
+      <div class="lbl">Aktionscode</div>
+      <code id="code">SUMMER10</code>
+      <div class="save">Du sparst <b>€ 1,25</b> auf das Aqua-Filament.</div>
+      <button onclick="copyCode(this)">Code kopieren</button>
+    </div>
   </div>
-  <div class="col">
-    <div class="spec-k" style="color:#9a958b">Varianten</div>
-    <div class="variant"><span>1,75 mm · 1 kg · Standardspule</span><em>12,49 €</em></div>
-    <div class="variant"><span>1,75 mm · 1 kg · Refill (ohne Kern)</span><em>11,99 €</em></div>
-    <div class="variant" style="margin-top:18px"><span><b style="color:var(--orange)">Mit SUMMER10</b> · Spule</span><em>11,24 €</em></div>
-    <div class="variant"><span><b style="color:var(--orange)">Mit SUMMER10</b> · Refill</span><em>10,79 €</em></div>
-    <p class="price-meta" style="margin-top:18px">
-      Verfügbar ab <b style="color:var(--paper)">22. September</b>. Vorbestellungen werden in Reihenfolge des Eingangs versendet.
-    </p>
-  </div>
-</section>
-
-<section class="gallery">
-  <div data-tag="A · Spule"><img src="product-aqua.jpg" alt="Spule Vorderansicht"></div>
-  <div data-tag="B · Detail"><img src="product-aqua-2.jpg" alt="Detail des Filaments"></div>
-  <div data-tag="C · Verpackung"><img src="product-aqua-3.jpg" alt="Verpackung"></div>
 </section>
 
 <footer>
-  <img class="lg" src="threedjake-logo.svg" alt="3DJake">
-  <span>Daten & Produkt: 3djake.at · eSUN · Stand 2026 · Sommer-Promo SUMMER10</span>
-  <a href="https://www.3djake.at/esun/pla-basic-aqua?sai=38179" target="_blank" rel="noopener">→ Zum Produkt</a>
+  <div class="wrap">
+    <img src="threedjake-logo.svg" alt="3DJake">
+    <span>Daten &amp; Produkt: 3djake.at · eSUN · Sommer-Promo SUMMER10</span>
+    <a href="https://www.3djake.at/esun/pla-basic-aqua?sai=38179" target="_blank" rel="noopener" style="color:var(--teal);font-weight:600">→ Zum Originalprodukt</a>
+  </div>
 </footer>
 
 <script>
+  function setImg(btn, src){
+    document.getElementById('mainimg').src = src;
+    document.querySelectorAll('.gallery-thumbs button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+  function qty(d){
+    const i = document.getElementById('q');
+    i.value = Math.max(1, parseInt(i.value)+d);
+  }
   function copyCode(btn){
     navigator.clipboard.writeText('SUMMER10').then(()=>{
+      const t = btn.textContent;
       btn.textContent = 'Kopiert!';
       btn.classList.add('copied');
-      setTimeout(()=>{btn.textContent='Code kopieren';btn.classList.remove('copied')},1800);
+      setTimeout(()=>{btn.textContent=t;btn.classList.remove('copied')},1800);
     });
   }
+  // sync variant click highlight
+  document.querySelectorAll('.variants label').forEach(l=>{
+    l.addEventListener('click', ()=>{
+      document.querySelectorAll('.variants label').forEach(x=>x.classList.remove('active'));
+      l.classList.add('active');
+    });
+  });
 </script>
 </body>
 </html>
